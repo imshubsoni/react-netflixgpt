@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { USER_AVATAR } from "../utils/constants";
 
 const UserAuthenticationForm = () => {
   const navigate = useNavigate();
@@ -42,11 +43,10 @@ const UserAuthenticationForm = () => {
           // Update User Information
           updateProfile(auth.currentUser, {
             displayName: fullname.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/56208408?v=4",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               // Profile updated!
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -67,7 +67,6 @@ const UserAuthenticationForm = () => {
       )
         .then((userCredential) => {
           // Signed in
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
