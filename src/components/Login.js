@@ -6,6 +6,9 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../utils/reduxstore/storeSlices/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -14,6 +17,9 @@ const Login = () => {
   const email = useRef();
   const password = useRef();
   const fullname = useRef();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const toggleSignInFlag = () => {
     setIsSignIn(!isSignIn);
@@ -38,7 +44,6 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           setIsSignIn(true);
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -55,7 +60,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          dispatch(loginUser(user));
+          return navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
