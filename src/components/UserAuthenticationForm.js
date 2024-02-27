@@ -1,16 +1,8 @@
 import React, { useRef, useState } from "react";
 import { EmailPasswordValidator } from "../utils/Validator";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
-import { USER_AVATAR } from "../utils/constants";
+import { ValidateUserAuthentication } from "../utils/UserAuthentication";
 
 const UserAuthenticationForm = () => {
-  const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
 
@@ -22,7 +14,7 @@ const UserAuthenticationForm = () => {
     setIsSignIn(!isSignIn);
   };
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = async () => {
     const result = EmailPasswordValidator(
       email.current.value,
       password.current.value
@@ -31,49 +23,13 @@ const UserAuthenticationForm = () => {
     if (result) return;
 
     // Handle Sign Up and Sign In
-    if (!isSignIn) {
-      // SIGN UP USER
-      createUserWithEmailAndPassword(
-        auth,
-        email.current.value,
-        password.current.value
-      )
-        .then((userCredential) => {
-          // Signed up
-          // Update User Information
-          updateProfile(auth.currentUser, {
-            displayName: fullname.current.value,
-            photoURL: USER_AVATAR,
-          })
-            .then(() => {
-              // Profile updated!
-            })
-            .catch((error) => {
-              // An error occurred
-              // ...
-            });
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + " -- " + errorMessage);
-        });
-    } else {
-      // SIGN IN USER
-      signInWithEmailAndPassword(
-        auth,
-        email.current.value,
-        password.current.value
-      )
-        .then((userCredential) => {
-          // Signed in
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + " -- " + errorMessage);
-        });
-    }
+    const err = await ValidateUserAuthentication(
+      isSignIn,
+      email.current.value,
+      password.current.value,
+      fullname.current ? fullname.current.value : ""
+    );
+    setErrorMessage(err);
   };
   return (
     <div className="form-container w-4/12 m-auto text-white z-10 relative">
