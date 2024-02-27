@@ -7,7 +7,7 @@ import {
   loginUser,
   logoutUser,
 } from "../utils/reduxstore/storeSlices/userSlice";
-import { NETFLIX_LOGO, USER_AVATAR } from "../utils/constants";
+import { NETFLIX_LOGO } from "../utils/constants";
 
 const Header = () => {
   const dispatch = useDispatch();

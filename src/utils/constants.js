@@ -6,3 +6,12 @@ export const NETFLIX_LOGO =
 
 export const NETFLIX_FAVICON =
   "https://assets.nflxext.com/ffe/siteui/common/icons/nficon2016.ico";
+
+export const API_OPTIONS = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNTUyYTE0MjA5ZjFkYTA5MTZkYWJjZWY2MWFjMjQyMCIsInN1YiI6IjY1ZGQ3NzJkNWM1NjRlMDE3Yzc5YTk0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.o8DW6PGfM9zPP-SQoceTCz8Dw8H1VNwkSTc-KCLxY7g",
+  },
+};

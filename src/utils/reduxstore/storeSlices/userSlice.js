@@ -8,7 +8,7 @@ const userSlice = createSlice({
   reducers: {
     loginUser: (state, action) => {
       state.user = action.payload;
-      console.log(current(state)); // This is the way to print the current state in the console.
+      // console.log(current(state)); // This is the way to print the current state in the console.
     },
     logoutUser: (state) => {
       state.user = null;

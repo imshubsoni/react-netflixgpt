@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import Header from "./Header";
+import MainContainer from "./MainContainer";
 
 const Browse = () => {
   const userInfo = useSelector((store) => store.user.user);
@@ -7,8 +8,7 @@ const Browse = () => {
   return (
     <div className="text-xl">
       <Header />
-      Logged In User Is :
-      {userInfo && <span className="font-bold"> {userInfo.displayName}</span>}
+      <MainContainer />
     </div>
   );
 };
