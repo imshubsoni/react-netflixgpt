@@ -6,8 +6,7 @@ const MainContainer = () => {
   const movies = useSelector((state) => state.movies.nowPlayingMovies);
   if (movies === null) return;
 
-  const x = Math.round(Math.random() * 19);
-  const mainMovie = movies[x];
+  const mainMovie = movies[2];
 
   return (
     <div className="main-video-container relative">
