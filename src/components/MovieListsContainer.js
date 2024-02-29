@@ -5,7 +5,7 @@ const MovieListsContainer = () => {
   const moviesLists = useSelector((store) => store.movies);
 
   return (
-    <div className="movie-lists-container bg-black pl-16">
+    <div className="movie-lists-container bg-black pl-16 pb-8">
       <div className="-mt-64 relative z-20">
         <MovieList
           movieList={moviesLists.nowPlayingMovies}

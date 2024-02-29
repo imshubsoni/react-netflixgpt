@@ -8,12 +8,14 @@ import {
   logoutUser,
 } from "../utils/reduxstore/storeSlices/userSlice";
 import { NETFLIX_LOGO } from "../utils/constants";
+import { toggleGptSearch } from "../utils/reduxstore/storeSlices/gptSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const userInfo = useSelector((store) => store.user.user);
+  const isGptSearchPage = useSelector((store) => store.gpt.showGptSearch);
 
   useEffect(() => {
     const unsubscribeEvent = onAuthStateChanged(auth, (user) => {
@@ -39,9 +41,26 @@ const Header = () => {
         // An error happened.
       });
   };
+
+  const handleGptSearchToggle = () => {
+    dispatch(toggleGptSearch());
+  };
+
   return (
     <div className="header-logo z-30 flex justify-between items-center bg-gradient-to-b from-black fixed w-full">
       <img className="logo w-52 py-4 ml-40" src={NETFLIX_LOGO} alt="logo" />
+      {userInfo && (
+        <button
+          onClick={handleGptSearchToggle}
+          className="text-red-600 px-6 mr-6"
+        >
+          {isGptSearchPage ? (
+            <i className="fa-solid fa-house text-4xl"></i>
+          ) : (
+            <i className="fa-brands fa-searchengin text-5xl"></i>
+          )}
+        </button>
+      )}
       {userInfo && (
         <div className="userinfo-container flex mr-5">
           <img

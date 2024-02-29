@@ -13,13 +13,13 @@ const VideoTitle = ({ movie }) => {
         <div className="flex my-10">
           <button className="py-3 px-9 rounded-md bg-white text-black text-3xl hover:bg-opacity-80">
             <span className="mr-2">
-              <i class="fa-solid fa-play"></i>
+              <i className="fa-solid fa-play"></i>
             </span>
             Play
           </button>
           <button className="py-3 px-9 mx-4 rounded-md bg-gray-500 bg-opacity-40 text-white text-3xl hover:bg-opacity-20">
             <span className="mr-2">
-              <i class="fa-solid fa-circle-info"></i>
+              <i className="fa-solid fa-circle-info"></i>
             </span>
             More Info
           </button>
