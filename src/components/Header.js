@@ -40,7 +40,7 @@ const Header = () => {
       });
   };
   return (
-    <div className="header-logo z-10 flex justify-between items-center bg-gradient-to-b from-black fixed w-full">
+    <div className="header-logo z-30 flex justify-between items-center bg-gradient-to-b from-black fixed w-full">
       <img className="logo w-52 py-4 ml-40" src={NETFLIX_LOGO} alt="logo" />
       {userInfo && (
         <div className="userinfo-container flex mr-5">
@@ -51,7 +51,7 @@ const Header = () => {
           />
           <button
             onClick={handleSignOut}
-            className="border-2 border-red-600 rounded-xl p-1 text-white px-2"
+            className="bg-red-600 rounded-md p-1 text-white px-6"
           >
             Sign Out
           </button>

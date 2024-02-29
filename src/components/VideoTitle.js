@@ -1,11 +1,12 @@
+import { MOVIE_POSTER_IMG_URL } from "../utils/constants";
+
 const VideoTitle = ({ movie }) => {
-  console.log(movie);
   return (
-    <div className="absolute top-0 py-52 px-24 text-white bg-gradient-to-r from-black w-6/12 h-full">
+    <div className="absolute top-0 py-48 px-16 text-white bg-gradient-to-r from-black w-8/12 h-full">
       <div className="">
         <img
           className="rounded-full w-40 h-40"
-          src={"https://image.tmdb.org/t/p/original" + movie.backdrop_path}
+          src={MOVIE_POSTER_IMG_URL + movie.backdrop_path}
         ></img>
         <h1 className="main-title text-6xl font-bold mt-10">{movie.title}</h1>
         <p className="w-8/12 mt-10">{movie.overview}</p>
