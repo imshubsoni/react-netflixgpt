@@ -7,8 +7,9 @@ import {
   loginUser,
   logoutUser,
 } from "../utils/reduxstore/storeSlices/userSlice";
-import { NETFLIX_LOGO } from "../utils/constants";
+import { LANG_OPTIONS, NETFLIX_LOGO } from "../utils/constants";
 import { toggleGptSearch } from "../utils/reduxstore/storeSlices/gptSlice";
+import { changeLanguage } from "../utils/reduxstore/storeSlices/configSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,10 @@ const Header = () => {
     dispatch(toggleGptSearch());
   };
 
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   return (
     <div className="header-logo z-30 flex justify-between items-center bg-gradient-to-b from-black fixed w-full">
       <img className="logo w-52 py-4 ml-40" src={NETFLIX_LOGO} alt="logo" />
@@ -63,6 +68,18 @@ const Header = () => {
       )}
       {userInfo && (
         <div className="userinfo-container flex mr-5">
+          {isGptSearchPage && (
+            <select
+              className="bg-gray-800 text-white mr-10 rounded-md px-2"
+              onChange={handleLanguageChange}
+            >
+              {LANG_OPTIONS.map((lang) => (
+                <option value={lang.identifier} key={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
           <img
             className="profile-photo mr-3 w-12 rounded-lg"
             src={userInfo.photoURL}
