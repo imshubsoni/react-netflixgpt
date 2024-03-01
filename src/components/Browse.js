@@ -8,6 +8,7 @@ import useTrendingMovies from "../hooks/useTrendingMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import { useSelector } from "react-redux";
 import GPTSearch from "./GPTSearch";
+import MovieDetailsPreview from "./MovieDetailsPreview";
 const Browse = () => {
   const isGptSearchPage = useSelector((store) => store.gpt.showGptSearch);
 
@@ -28,6 +29,7 @@ const Browse = () => {
           <MovieListsContainer />
         </>
       )}
+      <MovieDetailsPreview />
     </div>
   );
 };

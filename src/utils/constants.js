@@ -23,3 +23,5 @@ export const LANG_OPTIONS = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const OPENAI_KEY = "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";

@@ -3,6 +3,7 @@ import userReducer from "./storeSlices/userSlice";
 import moviesReducer from "./storeSlices/moviesSlice";
 import gptReducer from "./storeSlices/gptSlice";
 import configReducer from "./storeSlices/configSlice";
+import movieDetailsReducer from "./storeSlices/movieDetailsSlice";
 
 const appStore = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const appStore = configureStore({
     movies: moviesReducer,
     gpt: gptReducer,
     config: configReducer,
+    movieDetails: movieDetailsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
